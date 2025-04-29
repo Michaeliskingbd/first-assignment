@@ -1,4 +1,10 @@
+import { useState } from "react";
+
 const HeroSection = () => {
+  const [isSubcribed, setIsSubcribed] = useState(false);
+  const subcribe = () => {
+    setIsSubcribed(true);
+  };
   return (
     <section className="h-screen flex flex-col justify-center items-center px-4">
       <div className="text-center space-y-7">
@@ -14,10 +20,16 @@ const HeroSection = () => {
           <br /> automation, online courses and paid newsletters together.
         </p>
 
-        <button className="bg-[#fbe30c]  px-8 py-4 rounded-3xl font-bold w-fit">
-          Start 30-day FREE trial
+        <button
+          onClick={subcribe}
+          className="bg-[#fbe30c]  px-8 py-4 rounded-3xl font-bold w-fit"
+        >
+          {isSubcribed ? "You are now Subscribed" : "Start 30-day FREE trial"}
         </button>
-        <p>Try us free | No credit card required | Cancel anytime</p>
+        <p>
+          Try us {isSubcribed ? "premium" : "free"} | No credit card required |
+          Cancel anytime
+        </p>
       </div>
     </section>
   );
