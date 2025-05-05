@@ -1,14 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
-import User from "./pages/User";
+import Homepage from "./pages/Homepage";
+import Registration from "./pages/Registration";
 
 function App() {
   return (
-    <div>
-      {/* <Homepage /> */}
-      <Login />
-    </div>
+    <Routes>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/reg" element={<Registration />} />
+    </Routes>
   );
 }
 

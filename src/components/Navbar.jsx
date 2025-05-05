@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { TfiClose } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -61,12 +62,15 @@ const Navbar = () => {
           <p className="font-semibold text-2xl">Hi {name}!</p>
         ) : (
           <div className="lg:flex hidden gap-5 items-center font-bold">
-            <button
-              onClick={Login}
-              className="px-3 py-2 border-grey  border-2 rounded-xl"
-            >
-              Login
-            </button>
+            <Link to="/login">
+              <button
+                onClick={Login}
+                className="px-3 py-2 border-grey  border-2 rounded-xl"
+              >
+                Login
+              </button>
+            </Link>
+
             <button
               className="px-3 py-2  bg-[#00a2ff] hover:bg-white hover:border-[#00a2ff] hover:border-2 hover:text-[#00a2ff]
          text-white rounded-xl "

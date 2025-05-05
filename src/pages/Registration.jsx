@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-const Login = () => {
+const Registration = () => {
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [error, setError] = useState(false);
-  const [sucessMessage, setSuccessMessage] = useState(false);
-  const [showpassword, setShowPassword] = useState(false);
-
-  const togglePassword = () => {
-    setShowPassword(!showpassword);
-  };
 
   const Verify = (e) => {
-    e.preventDefault();
-    if (email && password && isChecked) {
-      console.log(email, password, isChecked);
-      setSuccessMessage(true);
+    if (email && password && isChecked && fullName && cpassword) {
+      navigate("/homepage");
     } else {
       setError(true);
     }
@@ -32,6 +25,18 @@ const Login = () => {
         <form onSubmit={Verify} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
+              Full Name
+            </label>
+            <input
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              placeholder="Enter your Fullname"
+              className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
               Email
             </label>
             <input
@@ -42,15 +47,28 @@ const Login = () => {
               className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Password
             </label>
             <input
-              type={showpassword ? "text" : "password"}
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              value={cpassword}
+              onChange={(e) => setCPassword(e.target.value)}
+              placeholder="Confirm your password"
               className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -63,9 +81,6 @@ const Login = () => {
           {error && (
             <p className="text-red-600">Please fill in all credentials</p>
           )}
-          {sucessMessage && (
-            <p className="text-green-600">Logged in successfully</p>
-          )}
 
           <button
             type="submit"
@@ -76,18 +91,16 @@ const Login = () => {
         </form>
         <div className="text-center mt-4 text-sm text-gray-600">
           <a href="#" className="hover:underline">
-            Forgot password?
+            Already have an account?
           </a>{" "}
           |
-          <Link to="/reg">
-            <a href="#" className="hover:underline ml-2">
-              Create an account
-            </a>
-          </Link>
+          <a href="#" className="hover:underline ml-2">
+            Login instead
+          </a>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Registration;

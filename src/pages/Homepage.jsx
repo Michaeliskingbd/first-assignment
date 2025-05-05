@@ -37,8 +37,6 @@ const Homepage = () => {
       </div>
 
       <Percentage />
-      
-
     </div>
   );
 };
