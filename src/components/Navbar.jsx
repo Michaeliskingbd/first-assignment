@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { TfiClose } from "react-icons/tfi";
@@ -39,14 +39,18 @@ const Navbar = () => {
           </svg>
 
           <ul className="lg:flex hidden gap-7 font-semibold cursor-pointer">
-            <li className="flex items-center gap-1 hover:text-[#00a2ff]">
-              Product <IoIosArrowForward className="text-xs mt-1" />
-            </li>
+            <Link to="/products">
+              <li className="flex items-center gap-1 hover:text-[#00a2ff]">
+                Product <IoIosArrowForward className="text-xs mt-1" />
+              </li>
+            </Link>
             <li className="hover:text-[#00a2ff]">Pricing</li>
             <li className="flex items-center gap-1 hover:text-[#00a2ff]">
               Resources <IoIosArrowForward className="text-xs mt-1" />
             </li>
-            <li className="hover:text-[#00a2ff]">Book a demo</li>
+            <Link to="/users">
+              <li className="hover:text-[#00a2ff]">Users</li>
+            </Link>
           </ul>
         </div>
 
@@ -71,12 +75,14 @@ const Navbar = () => {
               </button>
             </Link>
 
-            <button
-              className="px-3 py-2  bg-[#00a2ff] hover:bg-white hover:border-[#00a2ff] hover:border-2 hover:text-[#00a2ff]
+            <Link to="/reg">
+              <button
+                className="px-3 py-2  bg-[#00a2ff] hover:bg-white hover:border-[#00a2ff] hover:border-2 hover:text-[#00a2ff]
          text-white rounded-xl "
-            >
-              Sign up free
-            </button>
+              >
+                Sign up free
+              </button>
+            </Link>
           </div>
         )}
       </nav>
