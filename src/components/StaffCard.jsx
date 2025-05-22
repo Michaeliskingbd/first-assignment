@@ -3,6 +3,7 @@ import React from "react";
 const StaffCard = ({ name, postion, department, image }) => {
   return (
     <section className="m-auto">
+   
       <div className="max-w-xs bg-white rounded-2xl shadow-md overflow-hidden m-4">
         <img src={image} alt="pic" className="w-full h-48 object-cover" />
         <div className="p-4">

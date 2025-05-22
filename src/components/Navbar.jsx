@@ -3,15 +3,15 @@ import { IoIosArrowForward } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { TfiClose } from "react-icons/tfi";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
-const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(false);
+const Navbar = ({ firstName, userEmail }) => {
+  // const [isLogin, setIsLogin] = useState(false);
   const [isMobileNav, setIsMobileNav] = useState(false);
 
-  const Login = () => {
-    setIsLogin(true);
-  };
-  let name = "Mike";
+  const { gender } = useUser();
+
+  const isLogin = !!gender;
 
   const ToggleNavBar = () => {
     setIsMobileNav(!isMobileNav);
@@ -48,7 +48,7 @@ const Navbar = () => {
             <li className="flex items-center gap-1 hover:text-[#00a2ff]">
               Resources <IoIosArrowForward className="text-xs mt-1" />
             </li>
-            <Link to="/users">
+            <Link to="/user">
               <li className="hover:text-[#00a2ff]">Users</li>
             </Link>
           </ul>
@@ -63,12 +63,14 @@ const Navbar = () => {
         </div>
 
         {isLogin ? (
-          <p className="font-semibold text-2xl">Hi {name}!</p>
+          <p className="font-semibold text-2xl">
+            {gender} | {userEmail} | Hi {firstName}!
+          </p>
         ) : (
           <div className="lg:flex hidden gap-5 items-center font-bold">
             <Link to="/login">
               <button
-                onClick={Login}
+                // onClick={Login}
                 className="px-3 py-2 border-grey  border-2 rounded-xl"
               >
                 Login

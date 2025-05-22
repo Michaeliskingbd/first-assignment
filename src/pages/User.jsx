@@ -1,46 +1,87 @@
-import { useState } from "react";
+import React from "react";
+import { useUser } from "../context/UserContext";
 
-function User() {
-  const [count, setCount] = useState(0);
+const userData = {
+  users: [
+    {
+      id: 1,
+      firstName: "Emily",
+      lastName: "Johnson",
+      maidenName: "Smith",
+      age: 28,
+      gender: "female",
+      email: "emily.johnson@x.dummyjson.com",
+      phone: "+81 965-431-3024",
+      username: "emilys",
+      password: "emilyspass",
+      birthDate: "1996-5-30",
+      image: "https://dummyjson.com/icon/emilys/128",
+    },
+    {
+      id: 1,
+      firstName: "Emily",
+      lastName: "Johnson",
+      maidenName: "Smith",
+      age: 28,
+      gender: "female",
+      email: "emily.johnson@x.dummyjson.com",
+      phone: "+81 965-431-3024",
+      username: "emilys",
+      password: "emilyspass",
+      birthDate: "1996-5-30",
+      image: "https://dummyjson.com/icon/emilys/128",
+    },
+    {
+      id: 1,
+      firstName: "Emily",
+      lastName: "Johnson",
+      maidenName: "Smith",
+      age: 28,
+      gender: "female",
+      email: "emily.johnson@x.dummyjson.com",
+      phone: "+81 965-431-3024",
+      username: "emilys",
+      password: "emilyspass",
+      birthDate: "1996-5-30",
+      image: "https://dummyjson.com/icon/emilys/128",
+    },
+  ],
+};
 
-  const Add = () => {
-    setCount(count + 1);
-  };
-  const Remove = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
-
-  const Reset = () => {
-    setCount(0);
-  };
+function UserCard() {
+  const firstname = useUser();
   return (
-    <div className="p-[200px] w-fit flex gap-3">
-      <button
-        onClick={Remove}
-        className=" py-2 px-6 bg-red-400 rounded-md text-white font-semibold shadow-lg hover:bg-red-300 "
-      >
-        Remove
-      </button>
-      <span className="text-3xl font-bold">{count}</span>
-      <button
-        onClick={Add}
-        className=" py-2 px-6 bg-green-400 rounded-md text-white font-semibold shadow-lg hover:bg-green-300"
-      >
-        Add
-      </button>
-
-      {count > 0 && (
-        <button
-          onClick={Reset}
-          className=" py-2 px-6 bg-blue-400 rounded-md text-white font-semibold shadow-lg hover:bg-blue-300"
-        >
-          Reset
-        </button>
-      )}
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="grid grid-cols-1 gap-4 w-full max-w-md">
+        {userData.users.map((user) => (
+          <div
+            key={user.id}
+            className="bg-white p-6 rounded-2xl shadow-md flex gap-4 items-center"
+          >
+            <img
+              src={user.image}
+              alt={`${user.firstName} ${user.lastName}`}
+              className="w-20 h-20 rounded-full object-cover"
+            />
+            <div>
+              <h2 className="text-xl font-semibold">
+                {user.firstName} {user.lastName}
+              </h2>
+              <p className="text-sm text-gray-600">Username: {user.username}</p>
+              <p className="text-sm text-gray-600">Email: {user.email}</p>
+              <p className="text-sm text-gray-600">Phone: {user.phone}</p>
+              <p className="text-sm text-gray-600">
+                Birth Date: {user.birthDate}
+              </p>
+              <p className="text-sm text-gray-600">
+                Age: {user.age} | Gender: {user.gender}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
-export default User;
+export default UserCard;

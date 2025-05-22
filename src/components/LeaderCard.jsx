@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const LeaderCard = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const leaderList = [
     {
       name: "Michael Ade",
@@ -40,7 +46,7 @@ const LeaderCard = () => {
     },
   ];
   return (
-    <div>
+    <div data-aos="fade-right" data-aos-duration="3000">
       <h1 className="text-3xl font-bold ">OUR LEADERS</h1>
       <section className="m-auto mt-10 flex">
         {leaderList.map((l) => (
